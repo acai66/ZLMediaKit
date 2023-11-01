@@ -16,7 +16,7 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
-  IMAGE_NAME: zlmediakit/zlmediakit
+  IMAGE_NAME: acai66/zlmediakit
 
 jobs:
   build:
@@ -59,7 +59,7 @@ jobs:
         uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
         with:
           registry: ${{ env.REGISTRY }}
-          username: zlmediakit
+          username: acai66
           password: ${{ secrets.DOCKER_IO_SECRET }}
 
       # Extract metadata (tags, labels) for Docker
