@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS build
+FROM linuxserver/ffmpeg:latest AS build
 ARG MODEL
 #shell,rtmp,rtsp,rtsps,http,https,rtp
 EXPOSE 1935/tcp
@@ -48,7 +48,7 @@ WORKDIR /opt/media/ZLMediaKit/build
 RUN cmake -DCMAKE_BUILD_TYPE=${MODEL} -DENABLE_WEBRTC=true -DENABLE_FFMPEG=true -DENABLE_TESTS=false -DENABLE_API=false .. && \
     make -j $(nproc)
 
-FROM ubuntu:18.04
+FROM linuxserver/ffmpeg:latest
 ARG MODEL
 
 # ADD sources.list /etc/apt/sources.list
@@ -64,7 +64,6 @@ RUN apt-get update && \
          libssl-dev \
          libx264-dev \
          libfaac-dev \
-         ffmpeg \
          gcc \
          g++ \
          libavcodec-dev libavutil-dev libswscale-dev libresample-dev \
